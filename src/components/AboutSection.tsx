@@ -128,7 +128,7 @@ export default function AboutSection(): React.JSX.Element {
                   style={{ color: PRIMARY_TEXT_COLOR }}
                 >
                   BI3 Technologies is a global powerhouse in data, analytics,
-                  and AI—helping organizations unlock the hidden potential
+                  and AI helping organizations unlock the hidden potential
                   inside their data through modern architectures, intelligent
                   automation, and enterprise-grade AI systems.
                 </p>
@@ -146,6 +146,13 @@ export default function AboutSection(): React.JSX.Element {
                   BI3 builds scalable, secure, future-ready solutions that
                   accelerate digital transformation.
                 </p>
+              </div>
+              <div className="flex items-center justify-center">
+                <img 
+                  src="/images/bi3.png" 
+                  alt="BI3 Technologies Logo" 
+                  className="w-32 h-32 xs:w-40 xs:h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 object-contain"
+                />
               </div>
             </div>
           </motion.div>
@@ -254,7 +261,7 @@ export default function AboutSection(): React.JSX.Element {
         </div>
 
         {/* Services */}
-        <div className="mb-10">
+        {/* <div className="mb-10">
           <h3
             className="text-4xl font-bold text-center mb-10"
             style={{ color: PRIMARY_TEXT_COLOR }}
@@ -336,7 +343,7 @@ export default function AboutSection(): React.JSX.Element {
               </div>
             </motion.div>
           </AnimatePresence>
-        </div>
+        </div> */}
       </div>
     </section>
   );
