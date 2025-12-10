@@ -66,6 +66,7 @@ export default function AboutSection(): React.JSX.Element {
 
   return (
     <section
+      id="about"
       className="min-h-screen py-24 px-6 overflow-hidden relative"
       style={{ backgroundColor: BACKGROUND_COLOR }}
     >

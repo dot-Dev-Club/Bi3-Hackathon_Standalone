@@ -1,6 +1,6 @@
 export function Hero() {
   return (
-    <main className="min-h-screen hero-bg flex items-center justify-center relative text-gray-900 px-2 xs:px-4 sm:px-6" style={{ backgroundColor: '#E9B7F0' }}>
+    <main id="hero" className="min-h-screen hero-bg flex items-center justify-center relative text-gray-900 px-2 xs:px-4 sm:px-6" style={{ backgroundColor: '#E9B7F0' }}>
       {/* Top header with logos: left=Karunya, center=Bi3, right=Atom */}
       <header className="absolute inset-x-0 top-0 pointer-events-none">
         {/* logos are positioned relative to the header (viewport-wide) so left/right hit the edges */}
