@@ -23,26 +23,32 @@ export function Hero() {
         </div>
       </header>
 
-      <div className="container mx-auto px-2 xs:px-4 sm:px-6 py-20 xs:py-24 sm:py-24 mt-16 xs:mt-20 sm:mt-12 text-center">
-        <div className="inline-block px-2 xs:px-4 sm:px-6 py-1 xs:py-2 sm:py-3 border-2 border-black rounded-md bg-white/30 backdrop-blur-md">
-          <p className="text-xs xs:text-sm sm:text-lg md:text-xl lg:text-2xl font-semibold uppercase tracking-wide text-gray-900">Division of Data Science & Cyber Security</p>
+      <div className="container mx-auto px-2 xs:px-4 sm:px-6 py-8 xs:py-10 sm:py-8 lg:py-6 mt-20 xs:mt-24 sm:mt-28 lg:mt-32 text-center">
+        <div className="inline-block px-2 xs:px-4 sm:px-6 py-1 xs:py-2 sm:py-2 border-2 border-black rounded-md bg-white/30 backdrop-blur-md">
+          <p className="text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl font-semibold uppercase tracking-wide text-gray-900">Division of Data Science & Cyber Security</p>
         </div>
 
-        <div className="mt-4 xs:mt-6 sm:mt-8">
-          <h1 className="mt-4 xs:mt-6 font-extrabold tracking-tight leading-none">
-            <div className="font-extrabold text-[#662768]" style={{ fontSize: 'clamp(1.3rem, 6vw, 6rem)' }}>BI3 TECHNOLOGIES</div>
-            <div className="mt-2 xs:mt-4 text-sm xs:text-base sm:text-xl text-[#662768]">combines with</div>
-            <div className="mt-3 xs:mt-6 font-extrabold text-[#662768]" style={{ fontSize: 'clamp(0.9rem, 4.5vw, 4rem)' }}>INNOVATE-X</div>
+        <div className="mt-2 xs:mt-3 sm:mt-3 lg:mt-4">
+          <h1 className="mt-1 xs:mt-2 lg:mt-2 font-extrabold tracking-tight leading-none">
+            <div className="font-extrabold text-[#662768]" style={{ fontSize: 'clamp(1.2rem, 4.5vw, 3.5rem)' }}>BI3 TECHNOLOGIES</div>
+            <div className="mt-0.5 xs:mt-1 sm:mt-1 text-xs xs:text-sm sm:text-base lg:text-lg text-[#662768]">and</div>
+            <div className="mt-0.5 xs:mt-1 sm:mt-1 font-extrabold text-[#662768]" style={{ fontSize: 'clamp(0.8rem, 3.5vw, 2.5rem)' }}>INNOVATE-X</div>
+            <div className="mt-0.5 xs:mt-1 sm:mt-1 text-xs xs:text-sm sm:text-base lg:text-lg text-[#662768]">combined for this hackathon</div>
           </h1>
 
-          <p className="mt-4 xs:mt-6 text-sm xs:text-base sm:text-xl text-[#662768] max-w-3xl mx-auto px-2">Where innovation meets technology.</p>
-
-          <div className="mt-4 xs:mt-6 flex items-center justify-center gap-4 px-4">
-            <a href="#about" className="w-full xs:w-auto text-sm xs:text-base sm:inline-block sm:w-auto text-center rounded-md bg-[#662768] hover:bg-[#5a1f5f] text-white px-4 xs:px-6 py-2 xs:py-3 font-semibold shadow-lg">Learn More</a>
+          <div className="mt-3 xs:mt-4 sm:mt-4 lg:mt-5">
+            <div className="font-extrabold text-[#662768]" style={{ fontSize: 'clamp(1.4rem, 5.5vw, 4.5rem)' }}>BI3 BYTE BEATS</div>
+            <div className="font-extrabold text-[#662768]" style={{ fontSize: 'clamp(1.1rem, 4vw, 3.5rem)' }}>HACKATHON</div>
           </div>
 
-          <div className="mt-6 xs:mt-8 flex justify-center">
-            <span className="w-20 xs:w-28 h-1 rounded-full bg-gradient-to-r from-purple-400 to-pink-600" />
+          <p className="mt-2 xs:mt-3 sm:mt-3 text-xs xs:text-sm sm:text-base lg:text-lg text-[#662768] max-w-3xl mx-auto px-2">Where innovation meets technology.</p>
+
+          {/* <div className="mt-4 xs:mt-6 flex items-center justify-center gap-4 px-4">
+            <a href="#about" className="w-full xs:w-auto text-sm xs:text-base sm:inline-block sm:w-auto text-center rounded-md bg-[#662768] hover:bg-[#5a1f5f] text-white px-4 xs:px-6 py-2 xs:py-3 font-semibold shadow-lg">Learn More</a>
+          </div> */}
+
+          <div className="mt-3 xs:mt-4 sm:mt-4 flex justify-center">
+            <span className="w-16 xs:w-20 sm:w-24 h-1 rounded-full bg-gradient-to-r from-purple-400 to-pink-600" />
           </div>
         </div>
       </div>
