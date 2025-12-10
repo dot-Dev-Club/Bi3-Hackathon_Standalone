@@ -1,3 +1,4 @@
+
 import { Hero } from "@/components/Hero";
 import About from "@/components/AboutSection";
 import { RulesAndRegulations } from "@/components/RulesAndRegulations";
@@ -17,3 +18,4 @@ function App() {
 }
 
 export default App;
+
