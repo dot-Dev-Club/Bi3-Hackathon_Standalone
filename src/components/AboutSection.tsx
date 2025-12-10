@@ -261,7 +261,7 @@ export default function AboutSection(): React.JSX.Element {
         </div>
 
         {/* Services */}
-        {/* <div className="mb-10">
+        <div className="mb-10">
           <h3
             className="text-4xl font-bold text-center mb-10"
             style={{ color: PRIMARY_TEXT_COLOR }}
@@ -343,7 +343,7 @@ export default function AboutSection(): React.JSX.Element {
               </div>
             </motion.div>
           </AnimatePresence>
-        </div> */}
+        </div>
       </div>
     </section>
   );
