@@ -3,8 +3,6 @@ import { getReadableTextColor } from "../lib/utils";
 export function RulesAndRegulations() {
   const bgColor = '#E9B7F0';
   const textColor = getReadableTextColor(bgColor);
-  const cardBgColor = '#FFFFFF'; // White card background
-  const cardTextColor = getReadableTextColor(cardBgColor);
   const rules = [
     {
       icon: "👤",
@@ -70,7 +68,6 @@ export function RulesAndRegulations() {
       color: "from-purple-500 to-pink-600",
       items: [
         "Winners will be announced at the closing ceremony after the final evaluation.",
-        "Prizes are non-transferable and must be collected within the specified time.",
         "Organizers reserve the right to withhold a prize in case of any violation of rules."
       ],
       footer: ""
@@ -93,7 +90,7 @@ export function RulesAndRegulations() {
       title: "Organizers' Rights",
       color: "from-purple-500 to-pink-600",
       items: [
-        "The InnovateX team reserves the right to modify rules, schedules, or judging criteria if necessary.",
+        "The BI3 BYTE BEATS team reserves the right to modify rules, schedules, or judging criteria if necessary.",
         "The decision of the judges will be final and binding."
       ],
       footer: ""
@@ -120,7 +117,7 @@ export function RulesAndRegulations() {
         </h2>
         <div className="w-48 h-px bg-gradient-to-r from-transparent via-purple-600 to-transparent mx-auto my-4" />
         <p className="text-center mb-12 max-w-2xl mx-auto" style={{ color: textColor }}>
-          InnovateX Hackathon Guidelines - Please read carefully to ensure a fair and competitive environment
+          BI3 BYTE BEATS Hackathon Guidelines - Please read carefully to ensure a fair and competitive environment
         </p>
 
         <div className="grid md:grid-cols-2 gap-6 max-w-6xl mx-auto">
