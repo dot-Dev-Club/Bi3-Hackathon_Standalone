@@ -2,9 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import { Lock, Unlock, Terminal, Sparkles, X } from "lucide-react";
 import { Button } from "./ui/button";
 import { problemStatements as problems } from "../data/problemStatements";
-
-const COUNTDOWN_DURATION = 10; // 10 seconds countdown
-const CLICKS_TO_UNLOCK = 3; // Number of clicks required to start the countdown - EDIT THIS TO CHANGE CLICK COUNT
+import { HACKATHON_CONFIG } from "../config/hackathon";
 
 interface Problem {
   id: number;
@@ -16,43 +14,38 @@ interface Problem {
 }
 
 export function ProblemStatements() {
-  const getDifficultyColor = (difficulty: string) => {
-    switch (difficulty) {
-      case "Beginner": return "bg-green-500";
-      case "Intermediate": return "bg-yellow-500";
-      case "Advanced": return "bg-red-500";
-      default: return "bg-purple-500";
-    }
-  };
+
 
   const [isRevealed, setIsRevealed] = useState(() => {
-    return typeof window !== "undefined" && localStorage.getItem("hackathon_v4_isRevealed") === "true";
+    if (HACKATHON_CONFIG.isAppUnlocked) return true;
+    return typeof window !== "undefined" && localStorage.getItem("hackathon_v5_isRevealed") === "true";
   });
 
   const [isStarted, setIsStarted] = useState(() => {
-    return (typeof window !== "undefined" && localStorage.getItem("hackathon_v4_isStarted") === "true") || isRevealed;
+    if (HACKATHON_CONFIG.isAppUnlocked) return true;
+    return (typeof window !== "undefined" && localStorage.getItem("hackathon_v5_isStarted") === "true") || isRevealed;
   });
 
   const [clickCount, setClickCount] = useState(0);
-  const [timeLeft, setTimeLeft] = useState(COUNTDOWN_DURATION);
+  const [timeLeft, setTimeLeft] = useState(HACKATHON_CONFIG.countdownDuration);
   const [selectedProblem, setSelectedProblem] = useState<Problem | null>(null);
 
   useEffect(() => {
     if (isStarted) {
-      localStorage.setItem("hackathon_v4_isStarted", "true");
+      localStorage.setItem("hackathon_v5_isStarted", "true");
     }
   }, [isStarted]);
 
   useEffect(() => {
     if (isRevealed) {
-      localStorage.setItem("hackathon_v4_isRevealed", "true");
+      localStorage.setItem("hackathon_v5_isRevealed", "true");
     }
   }, [isRevealed]);
 
   const startCountdown = useCallback(() => {
     setClickCount((prev) => {
       const newCount = prev + 1;
-      if (newCount >= CLICKS_TO_UNLOCK) {
+      if (newCount >= HACKATHON_CONFIG.clicksToUnlock) {
         setIsStarted(true);
       }
       return newCount;
@@ -60,6 +53,12 @@ export function ProblemStatements() {
   }, []);
 
   useEffect(() => {
+    // If globally unlocked, skipping countdown logic might be preferred, or let it run instantly
+    if (HACKATHON_CONFIG.isAppUnlocked) {
+      if (!isRevealed) setIsRevealed(true);
+      return;
+    }
+
     if (!isStarted || timeLeft <= 0) return;
 
     const timer = setInterval(() => {
@@ -73,7 +72,7 @@ export function ProblemStatements() {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [isStarted, timeLeft]);
+  }, [isStarted, timeLeft, isRevealed]);
 
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
@@ -178,7 +177,7 @@ export function ProblemStatements() {
               <div className="h-1 bg-gray-700 overflow-hidden rounded-full">
                 <div
                   className="h-full bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 transition-all duration-1000"
-                  style={{ width: `${((COUNTDOWN_DURATION - timeLeft) / COUNTDOWN_DURATION) * 100}%` }}
+                  style={{ width: `${((HACKATHON_CONFIG.countdownDuration - timeLeft) / HACKATHON_CONFIG.countdownDuration) * 100}%` }}
                 />
               </div>
             </div>
