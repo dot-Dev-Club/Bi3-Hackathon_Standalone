@@ -66,3 +66,59 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Custom Cyber/Glow Animations */
+
+@layer utilities {
+    .cyber-grid {
+        background-image: linear-gradient(rgba(0, 255, 0, 0.1) 1px, transparent 1px),
+                          linear-gradient(90deg, rgba(0, 255, 0, 0.1) 1px, transparent 1px);
+        background-size: 20px 20px;
+    }
+
+    .glow-box {
+        box-shadow: 0 0 15px var(--primary);
+    }
+    
+    .glow-magenta {
+         box-shadow: 0 0 15px magenta;
+    }
+
+    .text-gradient {
+        background: linear-gradient(to right, #ec4899, #8b5cf6, #3b82f6);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    
+    .font-display {
+        font-family: 'Inter', sans-serif; /* Fallback or import a display font */
+    }
+}
+
+@keyframes pulse-glow {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.05); }
+}
+
+.animate-pulse-glow {
+    animation: pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes countdown-tick {
+    0% { transform: scale(0.95); opacity: 0.8; }
+    50% { transform: scale(1.05); opacity: 1; }
+    100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+.animate-countdown-tick {
+    animation: countdown-tick 1s ease-in-out infinite;
+}
+
+@keyframes scale-in {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.animate-scale-in {
+    animation: scale-in 0.5s ease-out forwards;
+}
