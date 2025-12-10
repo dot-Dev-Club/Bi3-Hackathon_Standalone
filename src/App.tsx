@@ -1,18 +1,10 @@
-import { Hero } from "@/components/Hero";
-import { About } from "@/components/About";
-import { RulesAndRegulations } from "@/components/RulesAndRegulations";
-import { ProblemStatements } from "@/components/ProblemStatements";
-import { Footer } from "@/components/Footer";
+import AboutSection from "./components/AboutSection";
 
-function App() {
+function App(): React.JSX.Element {
   return (
-    <div className="min-h-screen">
-      <Hero />
-      <About />
-      <ProblemStatements />
-      <RulesAndRegulations />
-      <Footer />
-    </div>
+    <>
+      <AboutSection />
+    </>
   );
 }
 
