@@ -1,11 +1,9 @@
 import { useState, type MouseEvent } from "react";
-import { Database, Brain, Zap, CheckCircle } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 const PRIMARY_TEXT_COLOR = "#410F43";
 const BACKGROUND_COLOR = "#E9B7F0";
 
 export default function AboutSection(): React.JSX.Element {
-  const [activeService, setActiveService] = useState<number>(0);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
   const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
@@ -16,53 +14,7 @@ export default function AboutSection(): React.JSX.Element {
     });
   };
 
-  const services = [
-    {
-      icon: <Database className="w-12 h-12" />,
-      title: "Data & Analytics",
-      description:
-        "Turning raw data into actionable insights through modern data architectures and reporting systems.",
-      features: [
-        "Cloud Data Warehouses",
-        "Real-time Analytics",
-        "Data Visualization & Dashboards",
-      ],
-      color: "from-[#410F43] to-[#B83280]",
-      statTag: "10TB+ Data Managed",
-    },
-    {
-      icon: <Brain className="w-12 h-12" />,
-      title: "Artificial Intelligence",
-      description:
-        "Building intelligent, enterprise-grade solutions for tomorrow using Machine Learning and NLP.",
-      features: [
-        "Machine Learning Models",
-        "Natural Language Processing (NLP)",
-        "Computer Vision & Predictive Models",
-      ],
-      color: "from-[#410F43] to-[#9F1239]",
-      statTag: "95% Model Accuracy",
-    },
-    {
-      icon: <Zap className="w-12 h-12" />,
-      title: "Automation & Integration",
-      description:
-        "Enhancing efficiency through intelligent process automation and seamless API connectivity.",
-      features: [
-        "Intelligent Process Automation",
-        "Robust API Integration",
-        "Workflow Optimization & Robotics",
-      ],
-      color: "from-[#7C2D12] to-[#9F1239]",
-      statTag: "70% Faster Processes",
-    },
-  ];
 
-  const serviceDetailVariants = {
-    initial: { y: 20, opacity: 0, transition: { duration: 0.4 } },
-    animate: { y: 0, opacity: 1, transition: { duration: 0.4 } },
-    exit: { y: -20, opacity: 0, transition: { duration: 0.3 } },
-  };
 
   return (
     <section

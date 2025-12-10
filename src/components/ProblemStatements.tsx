@@ -26,7 +26,7 @@ export function ProblemStatements() {
     return (typeof window !== "undefined" && localStorage.getItem("hackathon_v5_isStarted") === "true") || isRevealed;
   });
 
-  const [clickCount, setClickCount] = useState(0);
+  const [, setClickCount] = useState(0);
   const [timeLeft, setTimeLeft] = useState(HACKATHON_CONFIG.countdownDuration);
   const [selectedProblem, setSelectedProblem] = useState<Problem | null>(null);
 
@@ -276,12 +276,9 @@ export function ProblemStatements() {
                 </div>
               </div>
 
-              <div className="pt-6 flex justify-end gap-3">
+              <div className="pt-6 flex justify-end">
                 <Button variant="outline" onClick={() => setSelectedProblem(null)}>
                   Close
-                </Button>
-                <Button className="bg-[#662768] text-white hover:bg-[#662768]/90">
-                  Select This Problem
                 </Button>
               </div>
             </div>
