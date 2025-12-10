@@ -1,6 +1,6 @@
 import AboutSection from "./components/AboutSection";
 
-function App() {
+function App(): React.JSX.Element {
   return (
     <>
       <AboutSection />
