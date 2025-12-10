@@ -1,48 +1,48 @@
 export function Hero() {
   return (
-    <main className="min-h-screen hero-bg flex items-center justify-center relative text-gray-900" style={{ backgroundColor: '#E9B7F0' }}>
+    <main className="min-h-screen hero-bg flex items-center justify-center relative text-gray-900 px-2 xs:px-4 sm:px-6" style={{ backgroundColor: '#E9B7F0' }}>
       {/* Top header with logos: left=Karunya, center=Bi3, right=Atom */}
       <header className="absolute inset-x-0 top-0 pointer-events-none">
         {/* logos are positioned relative to the header (viewport-wide) so left/right hit the edges */}
-        <div className="absolute left-0 top-2 sm:top-0 pointer-events-auto">
-          <div className="m-2 sm:m-3 p-2 sm:p-3 bg-white/40 backdrop-blur-md border-2 border-black flex items-center justify-center w-20 h-20 sm:w-28 sm:h-28 rounded-none">
-            <img src="/images/karunya.jpeg" alt="Karunya" className="h-12 w-12 sm:h-20 sm:w-20 object-contain" />
+        <div className="absolute left-0 top-1 xs:top-2 sm:top-0 pointer-events-auto">
+          <div className="m-1 xs:m-2 sm:m-3 p-1 xs:p-2 sm:p-3 bg-white/40 backdrop-blur-md border-2 border-black flex items-center justify-center w-14 h-14 xs:w-16 xs:h-16 sm:w-28 sm:h-28 rounded-none">
+            <img src="/images/karunya.jpeg" alt="Karunya" className="h-8 w-8 xs:h-10 xs:w-10 sm:h-20 sm:w-20 object-contain" />
           </div>
         </div>
 
-        <div className="hidden sm:block absolute left-1/2 top-2 sm:top-0 transform -translate-x-1/2 pointer-events-auto">
-          <div className="m-2 sm:m-3 p-2 sm:p-3 bg-white/40 backdrop-blur-md border-2 border-black flex items-center justify-center w-20 h-20 sm:w-28 sm:h-28 rounded-none">
-            <img src="/images/bi3.png" alt="BI3" className="h-12 w-12 sm:h-20 sm:w-20 object-contain" />
+        <div className="absolute left-1/2 top-1 xs:top-2 sm:top-0 transform -translate-x-1/2 pointer-events-auto">
+          <div className="m-1 xs:m-2 sm:m-3 p-1 xs:p-2 sm:p-3 bg-white/40 backdrop-blur-md border-2 border-black flex items-center justify-center w-14 h-14 xs:w-16 xs:h-16 sm:w-28 sm:h-28 rounded-none">
+            <img src="/images/bi3.png" alt="BI3" className="h-8 w-8 xs:h-10 xs:w-10 sm:h-20 sm:w-20 object-contain" />
           </div>
         </div>
 
-        <div className="absolute right-0 top-2 sm:top-0 pointer-events-auto">
-          <div className="m-2 sm:m-3 p-2 sm:p-3 bg-white/40 backdrop-blur-md border-2 border-black flex items-center justify-center w-20 h-20 sm:w-28 sm:h-28 rounded-none">
-            <img src="/images/atom.png" alt="Atom" className="h-12 w-12 sm:h-20 sm:w-20 object-contain" />
+        <div className="absolute right-0 top-1 xs:top-2 sm:top-0 pointer-events-auto">
+          <div className="m-1 xs:m-2 sm:m-3 p-1 xs:p-2 sm:p-3 bg-white/40 backdrop-blur-md border-2 border-black flex items-center justify-center w-14 h-14 xs:w-16 xs:h-16 sm:w-28 sm:h-28 rounded-none">
+            <img src="/images/atom.png" alt="Atom" className="h-8 w-8 xs:h-10 xs:w-10 sm:h-20 sm:w-20 object-contain" />
           </div>
         </div>
       </header>
 
-      <div className="container mx-auto px-4 sm:px-6 py-16 sm:py-24 text-center">
-        <div className="inline-block px-4 sm:px-6 py-2 sm:py-3 border-2 border-black rounded-md bg-white/30 backdrop-blur-md">
-          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold uppercase tracking-wide text-gray-900">Division of Data Science & Cyber Security</p>
+      <div className="container mx-auto px-2 xs:px-4 sm:px-6 py-20 xs:py-24 sm:py-24 mt-16 xs:mt-20 sm:mt-12 text-center">
+        <div className="inline-block px-2 xs:px-4 sm:px-6 py-1 xs:py-2 sm:py-3 border-2 border-black rounded-md bg-white/30 backdrop-blur-md">
+          <p className="text-xs xs:text-sm sm:text-lg md:text-xl lg:text-2xl font-semibold uppercase tracking-wide text-gray-900">Division of Data Science & Cyber Security</p>
         </div>
 
-        <div className="mt-8">
-          <h1 className="mt-6 font-extrabold tracking-tight leading-none">
-            <div className="font-extrabold text-[#662768]" style={{ fontSize: 'clamp(2.5rem, 8vw, 9rem)' }}>BI3 TECHNOLOGIES</div>
-            <div className="mt-4 text-xl sm:text-2xl text-[#662768]">combines with</div>
-            <div className="mt-6 font-extrabold text-[#662768]" style={{ fontSize: 'clamp(1.5rem, 5.5vw, 5.5rem)' }}>INNOVATE-X</div>
+        <div className="mt-4 xs:mt-6 sm:mt-8">
+          <h1 className="mt-4 xs:mt-6 font-extrabold tracking-tight leading-none">
+            <div className="font-extrabold text-[#662768]" style={{ fontSize: 'clamp(1.3rem, 6vw, 6rem)' }}>BI3 TECHNOLOGIES</div>
+            <div className="mt-2 xs:mt-4 text-sm xs:text-base sm:text-xl text-[#662768]">combines with</div>
+            <div className="mt-3 xs:mt-6 font-extrabold text-[#662768]" style={{ fontSize: 'clamp(0.9rem, 4.5vw, 4rem)' }}>INNOVATE-X</div>
           </h1>
 
-          <p className="mt-6 text-xl sm:text-2xl text-[#662768] max-w-3xl mx-auto">Where innovation meets technology.</p>
+          <p className="mt-4 xs:mt-6 text-sm xs:text-base sm:text-xl text-[#662768] max-w-3xl mx-auto px-2">Where innovation meets technology.</p>
 
-          <div className="mt-6 flex items-center justify-center gap-4">
-            <a href="#about" className="w-full sm:inline-block sm:w-auto text-center rounded-md bg-[#662768] hover:bg-[#5a1f5f] text-white px-6 py-3 font-semibold shadow-lg">Learn More</a>
+          <div className="mt-4 xs:mt-6 flex items-center justify-center gap-4 px-4">
+            <a href="#about" className="w-full xs:w-auto text-sm xs:text-base sm:inline-block sm:w-auto text-center rounded-md bg-[#662768] hover:bg-[#5a1f5f] text-white px-4 xs:px-6 py-2 xs:py-3 font-semibold shadow-lg">Learn More</a>
           </div>
 
-          <div className="mt-8 flex justify-center">
-            <span className="w-28 h-1 rounded-full bg-gradient-to-r from-purple-400 to-pink-600" />
+          <div className="mt-6 xs:mt-8 flex justify-center">
+            <span className="w-20 xs:w-28 h-1 rounded-full bg-gradient-to-r from-purple-400 to-pink-600" />
           </div>
         </div>
       </div>
