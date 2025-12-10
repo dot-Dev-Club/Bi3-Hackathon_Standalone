@@ -15,19 +15,40 @@ interface Problem {
 
 export function ProblemStatements() {
 
+  // If showCountdown is false, skip all countdown logic and show problems directly
+  const skipCountdown = !HACKATHON_CONFIG.showCountdown || HACKATHON_CONFIG.isAppUnlocked;
 
+  // Check if already revealed from localStorage first
   const [isRevealed, setIsRevealed] = useState(() => {
-    if (HACKATHON_CONFIG.isAppUnlocked) return true;
-    return typeof window !== "undefined" && localStorage.getItem("hackathon_v5_isRevealed") === "true";
+    if (skipCountdown) return true;
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("hackathon_v5_isRevealed") === "true";
+    }
+    return false;
   });
 
   const [isStarted, setIsStarted] = useState(() => {
-    if (HACKATHON_CONFIG.isAppUnlocked) return true;
-    return (typeof window !== "undefined" && localStorage.getItem("hackathon_v5_isStarted") === "true") || isRevealed;
+    if (skipCountdown) return true;
+    if (typeof window !== "undefined") {
+      // If already revealed, consider it started too
+      const revealed = localStorage.getItem("hackathon_v5_isRevealed") === "true";
+      const started = localStorage.getItem("hackathon_v5_isStarted") === "true";
+      return revealed || started;
+    }
+    return false;
   });
 
   const [, setClickCount] = useState(0);
-  const [timeLeft, setTimeLeft] = useState(HACKATHON_CONFIG.countdownDuration);
+  
+  // If already revealed or countdown is skipped, set timeLeft to 0
+  const [timeLeft, setTimeLeft] = useState(() => {
+    if (skipCountdown) return 0;
+    if (typeof window !== "undefined" && localStorage.getItem("hackathon_v5_isRevealed") === "true") {
+      return 0;
+    }
+    return HACKATHON_CONFIG.countdownDuration;
+  });
+  
   const [selectedProblem, setSelectedProblem] = useState<Problem | null>(null);
 
   useEffect(() => {
