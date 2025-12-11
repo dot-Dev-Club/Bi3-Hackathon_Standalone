@@ -1,7 +1,8 @@
 import { useState, useEffect, useCallback } from "react";
-import { Lock, Unlock, Terminal, Sparkles, X } from "lucide-react";
+import { Lock, Unlock, Terminal, Sparkles, X, CheckCircle2, Target, Zap } from "lucide-react";
 import { Button } from "./ui/button";
 import { problemStatements as problems } from "../data/problemStatements";
+import { detailedProblemStatements } from "../data/detailedProblemStatements";
 import { HACKATHON_CONFIG } from "../config/hackathon";
 
 interface Problem {
@@ -204,101 +205,373 @@ export function ProblemStatements() {
             </div>
           </div>
         ) : (
-          /* Revealed state - Problem statements grid */
+          /* Revealed state - Single Problem Statement Display */
           <div className="animate-scale-in space-y-8">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-500/20 border border-purple-500 text-purple-400 font-mono text-sm rounded-full">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-500/20 border border-purple-500 text-purple-700 font-mono text-sm rounded-full">
               <Sparkles className="w-4 h-4" />
-              CHALLENGES UNLOCKED
+              Bi3 HACKATHON 2025 - CHALLENGE
             </div>
 
-            <p className="text-slate-700 font-medium text-center mb-12 max-w-2xl mx-auto">
-              Choose from one of the following problem statements or bring your own innovative idea.
-              Each track offers unique challenges and opportunities.
-            </p>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
-              {problems.map((problem) => (
-                <div
-                  key={problem.id}
-                  className="bg-white/60 backdrop-blur-md rounded-xl overflow-hidden border border-white/40 hover:border-white/60 transition-all hover:transform hover:scale-105 shadow-xl group"
-                >
-                  <div className="p-6">
-                    <div className="flex items-center justify-between mb-4">
-                      <span className="text-sm font-medium text-[#662768] bg-white/60 px-3 py-1 rounded-full">
-                        {problem.category}
+            {/* Single Problem Statement - Full Width Card */}
+            {problems.length === 1 ? (
+              <div className="max-w-5xl mx-auto">
+                <div className="bg-white/80 backdrop-blur-md rounded-2xl overflow-hidden border border-white/50 shadow-2xl">
+                  {/* Header */}
+                  <div className="bg-gradient-to-r from-[#662768] to-purple-600 p-6 md:p-8 text-white">
+                    <div className="flex flex-wrap items-center gap-3 mb-4">
+                      <span className="text-sm font-bold bg-white/20 px-4 py-1.5 rounded-full">
+                        🚗 {problems[0].category}
+                      </span>
+                      <span className="text-sm font-semibold bg-white/10 px-4 py-1.5 rounded-full">
+                        {problems[0].difficulty}
                       </span>
                     </div>
-                    <h3 className="text-xl font-bold mb-3 text-[#662768]">{problem.title}</h3>
-                    <p className="text-slate-700 text-sm mb-4 leading-relaxed font-medium line-clamp-3">{problem.description}</p>
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {problem.technologies.slice(0, 3).map((tech, idx) => (
-                        <span
-                          key={idx}
-                          className="text-xs bg-white/50 text-[#662768] px-2 py-1 rounded border border-[#662768]/10"
-                        >
-                          {tech}
-                        </span>
-                      ))}
+                    <h3 className="text-2xl md:text-4xl font-display font-bold leading-tight">
+                      {problems[0].title}
+                    </h3>
+                  </div>
+
+                  {/* Content */}
+                  <div className="p-6 md:p-8 space-y-8 text-left">
+                    {/* Overview */}
+                    {detailedProblemStatements[1]?.overview && (
+                      <div className="space-y-3">
+                        <div className="flex items-center gap-2">
+                          <div className="w-1 h-6 bg-[#662768] rounded-full"></div>
+                          <h4 className="text-lg font-bold text-slate-900 uppercase tracking-wide">Overview</h4>
+                        </div>
+                        <p className="text-slate-700 leading-relaxed text-base pl-4">
+                          {detailedProblemStatements[1].overview}
+                        </p>
+                      </div>
+                    )}
+
+                    {/* Objective */}
+                    {detailedProblemStatements[1]?.objective && (
+                      <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-6 rounded-xl border border-purple-100">
+                        <div className="flex items-start gap-3">
+                          <Target className="w-6 h-6 text-[#662768] flex-shrink-0 mt-1" />
+                          <div className="space-y-3 w-full">
+                            <h4 className="text-lg font-bold text-[#662768]">Objective</h4>
+                            <p className="text-slate-700 leading-relaxed">
+                              {detailedProblemStatements[1].objective}
+                            </p>
+                            {detailedProblemStatements[1].objectivePoints && (
+                              <ul className="grid sm:grid-cols-2 gap-2 mt-3">
+                                {detailedProblemStatements[1].objectivePoints.map((point, idx) => (
+                                  <li key={idx} className="flex items-center gap-2 text-slate-700">
+                                    <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0" />
+                                    <span>{point}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Core Requirements */}
+                    {detailedProblemStatements[1]?.coreRequirements && (
+                      <div className="space-y-4">
+                        <div className="flex items-center gap-2">
+                          <div className="w-1 h-6 bg-[#662768] rounded-full"></div>
+                          <h4 className="text-lg font-bold text-slate-900 uppercase tracking-wide">Core Requirements</h4>
+                        </div>
+                        {detailedProblemStatements[1].coreRequirements.map((req, idx) => (
+                          <div key={idx} className="pl-4 space-y-3">
+                            <h5 className="font-bold text-[#662768] flex items-center gap-2">
+                              <Zap className="w-5 h-5" />
+                              {req.title}
+                            </h5>
+                            <ul className="grid md:grid-cols-2 gap-2 ml-7">
+                              {req.points.map((point, pidx) => (
+                                <li key={pidx} className="flex items-start gap-2 text-slate-700">
+                                  <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                                  <span className="leading-relaxed">{point}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+
+                    {/* Use Cases */}
+                    {detailedProblemStatements[1]?.useCases && (
+                      <div className="space-y-4">
+                        <div className="flex items-center gap-2">
+                          <div className="w-1 h-6 bg-[#662768] rounded-full"></div>
+                          <h4 className="text-lg font-bold text-slate-900 uppercase tracking-wide">Sample Use Cases</h4>
+                        </div>
+                        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 pl-4">
+                          {detailedProblemStatements[1].useCases.map((useCase, idx) => (
+                            <div key={idx} className="bg-white border border-slate-200 p-4 rounded-lg hover:shadow-md transition-shadow">
+                              <h5 className="font-bold text-[#662768] mb-2 flex items-center gap-2">
+                                <div className="w-2 h-2 bg-[#662768] rounded-full"></div>
+                                {useCase.title}
+                              </h5>
+                              <p className="text-sm text-slate-600 leading-relaxed">{useCase.description}</p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Metrics */}
+                    {detailedProblemStatements[1]?.metrics && (
+                      <div className="space-y-4">
+                        <div className="flex items-center gap-2">
+                          <div className="w-1 h-6 bg-[#662768] rounded-full"></div>
+                          <h4 className="text-lg font-bold text-slate-900 uppercase tracking-wide">✅ Evaluation Metrics</h4>
+                        </div>
+                        <div className="bg-slate-50 p-6 rounded-xl border border-slate-200">
+                          <ul className="grid md:grid-cols-2 gap-3">
+                            {detailedProblemStatements[1].metrics.map((metric, idx) => (
+                              <li key={idx} className="flex items-start gap-2 text-sm text-slate-700">
+                                <CheckCircle2 className="w-4 h-4 text-purple-600 flex-shrink-0 mt-0.5" />
+                                <span className="leading-relaxed">{metric}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Technologies */}
+                    <div className="space-y-4 pt-4 border-t border-slate-200">
+                      <h4 className="text-sm font-bold text-slate-900 uppercase tracking-wider">Recommended Technologies</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {problems[0].technologies.map((tech, idx) => (
+                          <span
+                            key={idx}
+                            className="text-sm bg-[#662768] text-white px-4 py-2 rounded-lg shadow-sm font-medium hover:bg-[#662768]/90 transition-colors"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
                     </div>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => setSelectedProblem(problem as Problem)}
-                      className="w-full border-white/20 bg-white text-[#662768] hover:bg-white/90 hover:text-[#662768] transition-colors font-bold"
-                    >
-                      View Details
-                    </Button>
                   </div>
                 </div>
-              ))}
-            </div>
+              </div>
+            ) : (
+              /* Fallback Grid for multiple problems */
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
+                {problems.map((problem) => (
+                  <div
+                    key={problem.id}
+                    className="bg-white/60 backdrop-blur-md rounded-xl overflow-hidden border border-white/40 hover:border-white/60 transition-all hover:transform hover:scale-105 shadow-xl group"
+                  >
+                    <div className="p-6">
+                      <div className="flex items-center justify-between mb-4">
+                        <span className="text-sm font-medium text-[#662768] bg-white/60 px-3 py-1 rounded-full">
+                          {problem.category}
+                        </span>
+                      </div>
+                      <h3 className="text-xl font-bold mb-3 text-[#662768]">{problem.title}</h3>
+                      <p className="text-slate-700 text-sm mb-4 leading-relaxed font-medium line-clamp-3">{problem.description}</p>
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {problem.technologies.slice(0, 3).map((tech, idx) => (
+                          <span
+                            key={idx}
+                            className="text-xs bg-white/50 text-[#662768] px-2 py-1 rounded border border-[#662768]/10"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => setSelectedProblem(problem as Problem)}
+                        className="w-full border-white/20 bg-white text-[#662768] hover:bg-white/90 hover:text-[#662768] transition-colors font-bold"
+                      >
+                        View Details
+                      </Button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         )}
       </div>
 
       {/* Detail Modal */}
       {selectedProblem && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
-          <div className="relative w-full max-w-2xl bg-white/90 backdrop-blur-xl border border-white/50 rounded-2xl shadow-2xl p-6 md:p-8 animate-in zoom-in-95 duration-200">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200 overflow-y-auto">
+          <div className="relative w-full max-w-4xl bg-white/95 backdrop-blur-xl border border-white/50 rounded-2xl shadow-2xl my-8 animate-in zoom-in-95 duration-200">
             <button
               onClick={() => setSelectedProblem(null)}
-              className="absolute top-4 right-4 p-2 text-slate-500 hover:text-slate-900 transition-colors"
+              className="absolute top-4 right-4 p-2 text-slate-500 hover:text-slate-900 transition-colors z-10 bg-white rounded-full shadow-lg"
             >
               <X className="w-6 h-6" />
             </button>
 
-            <div className="space-y-6 text-left">
-              <div className="flex items-center gap-3">
-                <span className="text-sm font-medium text-[#662768] bg-[#662768]/10 px-3 py-1 rounded-full">
-                  {selectedProblem.category}
-                </span>
-              </div>
-
-              <h3 className="text-3xl font-display font-bold text-[#662768]">{selectedProblem.title}</h3>
-
-              <div className="space-y-4">
-                <h4 className="text-sm font-bold text-slate-900 uppercase tracking-wider">Description</h4>
-                <p className="text-slate-700 leading-relaxed font-medium">
-                  {selectedProblem.description}
-                </p>
-              </div>
-
-              <div className="space-y-4 border-t border-slate-200 pt-4">
-                <h4 className="text-sm font-bold text-slate-900 uppercase tracking-wider">Recommended Technologies</h4>
-                <div className="flex flex-wrap gap-2">
-                  {selectedProblem.technologies.map((tech, idx) => (
-                    <span
-                      key={idx}
-                      className="text-sm bg-[#662768] text-white px-3 py-1.5 rounded-md shadow-sm"
-                    >
-                      {tech}
-                    </span>
-                  ))}
+            <div className="p-6 md:p-8 space-y-6 text-left max-h-[85vh] overflow-y-auto">
+              {/* Header */}
+              <div className="space-y-4 pb-6 border-b border-slate-200">
+                <div className="flex flex-wrap items-center gap-3">
+                  <span className="text-sm font-bold text-[#662768] bg-[#662768]/10 px-4 py-1.5 rounded-full">
+                    {selectedProblem.category}
+                  </span>
+                  <span className="text-sm font-semibold text-slate-600 bg-slate-100 px-4 py-1.5 rounded-full">
+                    {selectedProblem.difficulty}
+                  </span>
                 </div>
+
+                <h3 className="text-3xl md:text-4xl font-display font-bold text-[#662768] leading-tight">
+                  {selectedProblem.title}
+                </h3>
               </div>
 
-              <div className="pt-6 flex justify-end">
-                <Button variant="outline" onClick={() => setSelectedProblem(null)}>
+              {/* Check if detailed content exists */}
+              {detailedProblemStatements[selectedProblem.id] ? (
+                <div className="space-y-8">
+                  {/* Overview */}
+                  {detailedProblemStatements[selectedProblem.id].overview && (
+                    <div className="space-y-3">
+                      <div className="flex items-center gap-2">
+                        <div className="w-1 h-6 bg-[#662768] rounded-full"></div>
+                        <h4 className="text-lg font-bold text-slate-900 uppercase tracking-wide">Overview</h4>
+                      </div>
+                      <p className="text-slate-700 leading-relaxed text-base pl-4">
+                        {detailedProblemStatements[selectedProblem.id].overview}
+                      </p>
+                    </div>
+                  )}
+
+                  {/* Objective */}
+                  {detailedProblemStatements[selectedProblem.id].objective && (
+                    <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-6 rounded-xl border border-purple-100">
+                      <div className="flex items-start gap-3">
+                        <Target className="w-6 h-6 text-[#662768] flex-shrink-0 mt-1" />
+                        <div className="space-y-2">
+                          <h4 className="text-lg font-bold text-[#662768]">Objective</h4>
+                          <p className="text-slate-700 leading-relaxed">
+                            {detailedProblemStatements[selectedProblem.id].objective}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Core Requirements */}
+                  {detailedProblemStatements[selectedProblem.id].coreRequirements && (
+                    <div className="space-y-4">
+                      <div className="flex items-center gap-2">
+                        <div className="w-1 h-6 bg-[#662768] rounded-full"></div>
+                        <h4 className="text-lg font-bold text-slate-900 uppercase tracking-wide">Core Requirements</h4>
+                      </div>
+                      {detailedProblemStatements[selectedProblem.id].coreRequirements!.map((req, idx) => (
+                        <div key={idx} className="pl-4 space-y-3">
+                          <h5 className="font-bold text-[#662768] flex items-center gap-2">
+                            <Zap className="w-5 h-5" />
+                            {req.title}
+                          </h5>
+                          <ul className="space-y-2 ml-7">
+                            {req.points.map((point, pidx) => (
+                              <li key={pidx} className="flex items-start gap-2 text-slate-700">
+                                <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                                <span className="leading-relaxed">{point}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Use Cases */}
+                  {detailedProblemStatements[selectedProblem.id].useCases && (
+                    <div className="space-y-4">
+                      <div className="flex items-center gap-2">
+                        <div className="w-1 h-6 bg-[#662768] rounded-full"></div>
+                        <h4 className="text-lg font-bold text-slate-900 uppercase tracking-wide">Sample Use Cases</h4>
+                      </div>
+                      <div className="grid md:grid-cols-2 gap-4 pl-4">
+                        {detailedProblemStatements[selectedProblem.id].useCases!.map((useCase, idx) => (
+                          <div key={idx} className="bg-white border border-slate-200 p-4 rounded-lg hover:shadow-md transition-shadow">
+                            <h5 className="font-bold text-[#662768] mb-2 flex items-center gap-2">
+                              <div className="w-2 h-2 bg-[#662768] rounded-full"></div>
+                              {useCase.title}
+                            </h5>
+                            <p className="text-sm text-slate-600 leading-relaxed">{useCase.description}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Metrics */}
+                  {detailedProblemStatements[selectedProblem.id].metrics && (
+                    <div className="space-y-4">
+                      <div className="flex items-center gap-2">
+                        <div className="w-1 h-6 bg-[#662768] rounded-full"></div>
+                        <h4 className="text-lg font-bold text-slate-900 uppercase tracking-wide">Evaluation Metrics</h4>
+                      </div>
+                      <div className="bg-slate-50 p-6 rounded-xl border border-slate-200">
+                        <ul className="grid md:grid-cols-2 gap-3">
+                          {detailedProblemStatements[selectedProblem.id].metrics!.map((metric, idx) => (
+                            <li key={idx} className="flex items-start gap-2 text-sm text-slate-700">
+                              <CheckCircle2 className="w-4 h-4 text-purple-600 flex-shrink-0 mt-0.5" />
+                              <span className="leading-relaxed">{metric}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Technologies */}
+                  <div className="space-y-4 pt-4 border-t border-slate-200">
+                    <h4 className="text-sm font-bold text-slate-900 uppercase tracking-wider">Recommended Technologies</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {selectedProblem.technologies.map((tech, idx) => (
+                        <span
+                          key={idx}
+                          className="text-sm bg-[#662768] text-white px-4 py-2 rounded-lg shadow-sm font-medium hover:bg-[#662768]/90 transition-colors"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                /* Simple view for other problem statements */
+                <div className="space-y-6">
+                  <div className="space-y-4">
+                    <h4 className="text-sm font-bold text-slate-900 uppercase tracking-wider">Description</h4>
+                    <p className="text-slate-700 leading-relaxed font-medium text-base">
+                      {selectedProblem.description}
+                    </p>
+                  </div>
+
+                  <div className="space-y-4 border-t border-slate-200 pt-4">
+                    <h4 className="text-sm font-bold text-slate-900 uppercase tracking-wider">Recommended Technologies</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {selectedProblem.technologies.map((tech, idx) => (
+                        <span
+                          key={idx}
+                          className="text-sm bg-[#662768] text-white px-3 py-1.5 rounded-md shadow-sm"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Close Button */}
+              <div className="pt-6 flex justify-end border-t border-slate-200">
+                <Button 
+                  variant="outline" 
+                  onClick={() => setSelectedProblem(null)}
+                  className="px-6 py-2 border-[#662768] text-[#662768] hover:bg-[#662768] hover:text-white font-semibold"
+                >
                   Close
                 </Button>
               </div>
