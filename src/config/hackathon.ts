@@ -7,7 +7,7 @@ export const HACKATHON_CONFIG = {
     // SET THIS TO 'true' TO SHOW THE COUNTDOWN TIMER
     // When true: Users see the countdown timer before problems are revealed
     // When false: Problems are shown directly without any countdown or unlock button
-    showCountdown: true,
+    showCountdown: false,
 
     // Animation settings (only used when showCountdown is true)
     countdownDuration: 10, // seconds
